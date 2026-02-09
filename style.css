@@ -1,6 +1,7 @@
 body{
     margin:0;
     font-family:Arial, sans-serif;
+    overflow-x:hidden;
 }
 
 /* Banner */
@@ -15,39 +16,30 @@ body{
     color:white;
 }
 
-/* Fondo estilo Apple/Tesla */
-.liquid-bg{
+/* SVG líquido */
+.liquid-svg{
     position:absolute;
-    width:200%;
-    height:200%;
-    background:
-        radial-gradient(circle at 20% 30%, #facc1555, transparent 40%),
-        radial-gradient(circle at 80% 60%, #2563eb55, transparent 40%),
-        radial-gradient(circle at 50% 80%, #9333ea44, transparent 40%);
-    filter: blur(100px);
-    animation: moveBg 18s infinite alternate ease-in-out;
-}
-
-@keyframes moveBg{
-    from{ transform:translate(-10%,-10%); }
-    to{ transform:translate(10%,10%); }
-}
-
-/* Pintura cubriendo pantalla */
-.paint-layer{
-    position:absolute;
-    bottom:-100%;
+    bottom:0;
+    left:0;
     width:100%;
     height:100%;
-    background:#facc15;
-    border-top-left-radius:50%;
-    border-top-right-radius:50%;
-    animation: paintRise 2.2s ease-out forwards;
+    z-index:1;
 }
 
-@keyframes paintRise{
-    to{
-        bottom:0;
+/* Animación de onda */
+.liquid-wave{
+    animation: wave 4s ease-in-out infinite alternate;
+}
+
+@keyframes wave{
+    0%{
+        d: path("M0,500 C360,400 1080,600 1440,500 L1440,500 L0,500 Z");
+    }
+    50%{
+        d: path("M0,500 C360,450 1080,550 1440,500 L1440,500 L0,500 Z");
+    }
+    100%{
+        d: path("M0,500 C360,500 1080,500 1440,500 L1440,500 L0,500 Z");
     }
 }
 
@@ -58,12 +50,12 @@ body{
     z-index:2;
 }
 
-/* Logo emerge */
+/* Logo emerge del líquido */
 .logo-area{
     opacity:0;
     transform:translateY(60px);
     animation: logoReveal 1.6s forwards;
-    animation-delay:1.8s;
+    animation-delay:0.8s;
 }
 
 @keyframes logoReveal{
@@ -89,11 +81,11 @@ body{
     font-weight:bold;
 }
 
-/* Texto aparece después */
+/* Texto principal */
 .main-text{
     opacity:0;
     animation: textReveal 1.5s forwards;
-    animation-delay:2.4s;
+    animation-delay:1.4s;
 }
 
 @keyframes textReveal{
@@ -120,94 +112,3 @@ body{
 .cta-button:hover{
     transform:translateY(-4px);
 }
-    display:inline-block;
-    overflow:hidden;
-}
-
-/* Cubeta cae dentro de la C */
-.paint-bucket{
-    position:absolute;
-    font-size:40px;
-    top:-80px;
-    left:40px;
-    animation: bucketDrop 1.5s ease-out forwards;
-    z-index:4;
-}
-
-@keyframes bucketDrop{
-    to{ top:35px; }
-}
-
-/* Pintura llenando la C */
-.paint-fill{
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:0;
-    background:#f9c806;
-    animation: fillPaint 2s ease-out forwards;
-    animation-delay:1.4s;
-    z-index:2;
-}
-
-@keyframes fillPaint{
-    to{ height:100%; }
-}
-
-/* Derrame hacia el banner */
-.paint-spread{
-    position:absolute;
-    bottom:-200px;
-    left:-20%;
-    width:140%;
-    height:0;
-    background:#f9c806;
-    border-top-left-radius:50%;
-    border-top-right-radius:50%;
-    animation: spreadPaint 2s ease-out forwards;
-    animation-delay:3s;
-    z-index:1;
-}
-
-@keyframes spreadPaint{
-    to{ height:60%; }
-}
-
-/* Letra visible */
-.c-shape{
-    position:relative;
-    z-index:5;
-}
-
-/* Nombre empresa */
-.logo-name{
-    font-size:28px;
-    letter-spacing:3px;
-}
-
-.logo-name span{
-    color:#f9c806;
-}
-
-/* Texto principal */
-.main-text h1{
-    font-size:56px;
-    margin:20px 0;
-}
-
-/* Botón */
-.cta-button{
-    padding:15px 35px;
-    border:none;
-    border-radius:10px;
-    background:#f9c806;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.cta-button:hover{
-    transform:translateY(-4px);
-}
-
