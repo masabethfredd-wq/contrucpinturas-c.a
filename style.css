@@ -16,30 +16,43 @@ body{
     color:white;
 }
 
-/* SVG líquido */
-.liquid-svg{
+/* Fondo de colores dinámico */
+.liquid-bg{
     position:absolute;
-    bottom:0;
+    top:0;
     left:0;
-    width:100%;
-    height:100%;
+    width:200%;
+    height:200%;
+    background:
+        radial-gradient(circle at 20% 30%, #facc1555, transparent 40%),
+        radial-gradient(circle at 80% 60%, #2563eb55, transparent 40%),
+        radial-gradient(circle at 50% 80%, #9333ea44, transparent 40%);
+    filter: blur(100px);
+    animation: moveBg 20s infinite alternate ease-in-out;
     z-index:1;
 }
 
-/* Animación de onda */
-.liquid-wave{
-    animation: wave 4s ease-in-out infinite alternate;
+@keyframes moveBg{
+    from{ transform:translate(-10%,-10%); }
+    to{ transform:translate(10%,10%); }
 }
 
-@keyframes wave{
-    0%{
-        d: path("M0,500 C360,400 1080,600 1440,500 L1440,500 L0,500 Z");
-    }
-    50%{
-        d: path("M0,500 C360,450 1080,550 1440,500 L1440,500 L0,500 Z");
-    }
-    100%{
-        d: path("M0,500 C360,500 1080,500 1440,500 L1440,500 L0,500 Z");
+/* Máscara de pintura líquida */
+.paint-mask{
+    position:absolute;
+    bottom:-100%;
+    left:0;
+    width:100%;
+    height:120%;
+    background:#facc15;
+    border-radius:50% 50% 0 0;
+    animation: paintRise 3s ease-out forwards;
+    z-index:2;
+}
+
+@keyframes paintRise{
+    to{
+        bottom:0;
     }
 }
 
@@ -47,7 +60,7 @@ body{
 .banner-content{
     position:relative;
     text-align:center;
-    z-index:2;
+    z-index:3;
 }
 
 /* Logo emerge del líquido */
@@ -55,7 +68,7 @@ body{
     opacity:0;
     transform:translateY(60px);
     animation: logoReveal 1.6s forwards;
-    animation-delay:0.8s;
+    animation-delay:2s;
 }
 
 @keyframes logoReveal{
@@ -85,7 +98,7 @@ body{
 .main-text{
     opacity:0;
     animation: textReveal 1.5s forwards;
-    animation-delay:1.4s;
+    animation-delay:2.5s;
 }
 
 @keyframes textReveal{
