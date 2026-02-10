@@ -1,10 +1,11 @@
+/* ===== RESET ===== */
 body{
     margin:0;
     font-family:Arial, sans-serif;
     overflow-x:hidden;
 }
 
-/* Banner */
+/* ===== BANNER ===== */
 .hero-banner{
     height:100vh;
     display:flex;
@@ -16,7 +17,7 @@ body{
     color:white;
 }
 
-/* Fondo de colores dinámico */
+/* Fondo dinámico */
 .liquid-bg{
     position:absolute;
     top:0;
@@ -37,7 +38,7 @@ body{
     to{ transform:translate(10%,10%); }
 }
 
-/* Máscara de pintura líquida */
+/* Pintura subiendo */
 .paint-mask{
     position:absolute;
     bottom:-100%;
@@ -51,19 +52,17 @@ body{
 }
 
 @keyframes paintRise{
-    to{
-        bottom:0;
-    }
+    to{ bottom:0; }
 }
 
-/* Contenido */
+/* Contenido banner */
 .banner-content{
     position:relative;
     text-align:center;
     z-index:3;
 }
 
-/* Logo emerge del líquido */
+/* Logo aparece */
 .logo-area{
     opacity:0;
     transform:translateY(60px);
@@ -121,6 +120,11 @@ body{
     cursor:pointer;
     transition:.3s;
 }
+
+.cta-button:hover{
+    transform:translateY(-4px);
+}
+
 /* ===== HEADER ===== */
 #mainHeader{
     position:fixed;
@@ -144,7 +148,7 @@ body{
 }
 
 .header-logo{
-    width:45px;
+    width:42px;
 }
 
 .menu-desktop{
@@ -186,25 +190,25 @@ body{
     text-decoration:none;
 }
 
-/* RESPONSIVE */
+/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
+
     .menu-desktop{ display:none; }
     .menu-toggle{ display:block; }
-}
 
-/* ===== ARREGLO BANNER EN TELEFONO ===== */
-@media(max-width:768px){
     .banner-content h1{
         font-size:2.3rem;
     }
 
-    .logo-3d-container{
-        margin-top:-80px;
-        transform:scale(.75);
+    .logo-area{
+        transform:scale(.8);
+    }
+
+    .logo-c{
+        font-size:80px;
+    }
+
+    .main-text h1{
+        font-size:36px;
     }
 }
-
-.cta-button:hover{
-    transform:translateY(-4px);
-}
-
