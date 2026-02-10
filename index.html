@@ -129,14 +129,20 @@ z-index:2;
 </section>
 
 <!-- SOBRE NOSOTROS -->
-<section class="py-28 bg-white text-gray-800">
+<section class="py-28 bg-white text-gray-800 overflow-hidden">
+
 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
 
-<div class="relative h-[400px] bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl shadow-xl flex items-center justify-center text-white text-2xl font-bold">
+<!-- Imagen -->
+<div class="about-img opacity-0 translate-x-[-80px] transition-all duration-1000">
+<div class="relative h-[420px] bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl shadow-xl flex items-center justify-center text-white text-2xl font-bold">
 Imagen de fábrica
 </div>
+</div>
 
-<div>
+<!-- Texto -->
+<div class="about-text opacity-0 translate-x-[80px] transition-all duration-1000">
+
 <span class="text-yellow-500 font-bold uppercase tracking-widest">
 Sobre Nosotros
 </span>
@@ -151,31 +157,34 @@ de alta calidad para proyectos residenciales e industriales,
 garantizando durabilidad y acabados superiores.
 </p>
 
-<p class="text-lg text-gray-600 leading-relaxed mb-8">
-Utilizamos materias primas confiables y procesos modernos para ofrecer
-productos adaptados al clima y necesidades del mercado venezolano.
+<p class="text-lg text-gray-600 leading-relaxed mb-10">
+Utilizamos procesos modernos para ofrecer productos adaptados al clima y
+necesidades del mercado venezolano.
 </p>
 
-<div class="grid grid-cols-2 gap-6 text-sm">
-<div>
-<h4 class="font-bold mb-1">✔ Calidad Garantizada</h4>
-<p class="text-gray-500">Productos duraderos.</p>
+<!-- Tarjetas -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<div class="about-card p-6 bg-gray-100 rounded-2xl shadow hover:shadow-xl transition hover:-translate-y-2">
+<h4 class="font-bold mb-2">✔ Calidad Garantizada</h4>
+<p class="text-gray-600">Productos duraderos.</p>
 </div>
 
-<div>
-<h4 class="font-bold mb-1">✔ Producción Nacional</h4>
-<p class="text-gray-500">Fabricación en Valencia.</p>
+<div class="about-card p-6 bg-gray-100 rounded-2xl shadow hover:shadow-xl transition hover:-translate-y-2">
+<h4 class="font-bold mb-2">✔ Producción Nacional</h4>
+<p class="text-gray-600">Fabricación en Valencia.</p>
 </div>
 
-<div>
-<h4 class="font-bold mb-1">✔ Amplia Variedad</h4>
-<p class="text-gray-500">Soluciones para toda obra.</p>
+<div class="about-card p-6 bg-gray-100 rounded-2xl shadow hover:shadow-xl transition hover:-translate-y-2">
+<h4 class="font-bold mb-2">✔ Amplia Variedad</h4>
+<p class="text-gray-600">Soluciones para toda obra.</p>
 </div>
 
-<div>
-<h4 class="font-bold mb-1">✔ Atención Profesional</h4>
-<p class="text-gray-500">Asesoría especializada.</p>
+<div class="about-card p-6 bg-gray-100 rounded-2xl shadow hover:shadow-xl transition hover:-translate-y-2">
+<h4 class="font-bold mb-2">✔ Atención Profesional</h4>
+<p class="text-gray-600">Asesoría especializada.</p>
 </div>
+
 </div>
 </div>
 
@@ -183,52 +192,20 @@ productos adaptados al clima y necesidades del mercado venezolano.
 </section>
 
 <script>
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-let particles=[];
-
-function resize(){
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.remove("opacity-0");
+entry.target.classList.remove("translate-x-[-80px]");
+entry.target.classList.remove("translate-x-[80px]");
 }
-window.addEventListener('resize',resize);
-resize();
-
-function initParticles(){
-particles=[];
-for(let i=0;i<100;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*3+1,
-dx:(Math.random()-0.5),
-dy:Math.random()*1.5+0.5,
-color:`hsla(${Math.random()*360},80%,60%,0.6)`
 });
-}
-}
+},{threshold:0.3});
 
-function drawParticles(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-for(let p of particles){
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fillStyle=p.color;
-ctx.fill();
-
-p.x+=p.dx;
-p.y+=p.dy;
-
-if(p.x<0)p.x=canvas.width;
-if(p.x>canvas.width)p.x=0;
-if(p.y>canvas.height)p.y=0;
-}
-requestAnimationFrame(drawParticles);
-}
-
-initParticles();
-drawParticles();
+observer.observe(document.querySelector(".about-img"));
+observer.observe(document.querySelector(".about-text"));
 </script>
 
 </body>
 </html>
+
