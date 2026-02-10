@@ -3,113 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ConstruCPinturas | Banner Animado</title>
-<script src="logo-c.png"></script>
+<title>ConstruCPinturas | Banner Premium</title>
 <style>
-/* Fondo líquido animado */
-@keyframes wave {
-  0% { transform: translateX(0) translateY(0) rotate(0deg); }
-  50% { transform: translateX(-25%) translateY(-5%) rotate(3deg); }
-  100% { transform: translateX(0) translateY(0) rotate(0deg); }
-}
+    /* Reset básico */
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-.liquid-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(45deg, #f9c806, #f28c28, #ff6b6b, #ffb347);
-  background-size: 400% 400%;
-  animation: wave 8s ease-in-out infinite, gradient 12s ease-in-out infinite;
-  z-index: -1;
-}
+    body, html { 
+        height:100%; 
+        font-family: 'Montserrat', sans-serif;
+        background: #0f172a;
+        overflow-x: hidden;
+    }
 
-@keyframes gradient {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
+    /* Banner completo */
+    .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: linear-gradient(135deg, #1e293b, #0f172a);
+    }
 
-/* Logo y relleno animado */
-.logo-container {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin-bottom: 2rem;
-}
+    /* Contenedor del logo */
+    .logo-3d-container {
+        position: relative;
+        width: 150px; /* contenedor para animación de pintura */
+        height: 150px;
+        z-index: 10;
+    }
 
-.logo-fill {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: #f28c28;
-  animation: fillLogo 3s forwards 1s;
-  z-index: 1;
-  clip-path: inset(0 0 0 0); /* cubre toda la C */
-}
+    /* Imagen de la C */
+    .logo-3d-container img {
+        width: 120px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: 50%;
+        position: relative;
+        z-index: 5;
+    }
 
-@keyframes fillLogo {
-  0% { height: 0%; }
-  100% { height: 100%; }
-}
+    /* Pintura líquida */
+    .paint-fill {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: linear-gradient(135deg, #f9c806, #ff4d4d);
+        border-radius: 50%;
+        z-index: 4;
+        animation: fill 3s forwards ease-in-out;
+    }
 
-/* Partículas flotando */
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: floatParticle 6s linear infinite;
-}
+    @keyframes fill {
+        0% { height: 0; }
+        100% { height: 120px; } /* altura final igual a la C */
+    }
 
-@keyframes floatParticle {
-  0% { transform: translateY(0) scale(1); opacity:0.6; }
-  50% { transform: translateY(-50px) scale(1.2); opacity:1; }
-  100% { transform: translateY(0) scale(1); opacity:0.6; }
-}
+    /* Texto principal */
+    .banner-content {
+        position: absolute;
+        bottom: 50px;
+        width: 100%;
+        text-align: center;
+        color: white;
+        z-index: 20;
+    }
+
+    .banner-content h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .cta-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #0f172a;
+        background: #f9c806;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(249,200,6,0.5);
+    }
+
+    /* Fondo de partículas */
+    canvas#particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
 </style>
 </head>
-<body class="bg-gray-900 text-white overflow-x-hidden">
+<body>
 
-<section class="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+<section class="hero-banner">
 
-  <!-- Fondo líquido -->
-  <div class="liquid-bg"></div>
+    <!-- Partículas -->
+    <canvas id="particles"></canvas>
 
-  <!-- Partículas decorativas -->
-  <div class="particle w-4 h-4 bg-yellow-400" style="top:20%; left:10%; animation-delay:0s;"></div>
-  <div class="particle w-6 h-6 bg-red-400" style="top:40%; left:70%; animation-delay:1s;"></div>
-  <div class="particle w-3 h-3 bg-orange-400" style="top:60%; left:30%; animation-delay:2s;"></div>
-  <div class="particle w-5 h-5 bg-pink-500" style="top:80%; left:50%; animation-delay:3s;"></div>
-
-  <!-- Contenido del banner -->
-  <div class="relative z-10 flex flex-col items-center text-center px-6">
-
-    <!-- Logo animado -->
-    <div class="logo-container">
-      <img src="logo-c.png" alt="Logo C" class="w-full h-full object-contain relative z-10">
-      <div class="logo-fill"></div>
+    <!-- Contenedor logo y pintura -->
+    <div class="logo-3d-container">
+        <img src="logo-c.png" alt="Logo C">
+        <div class="paint-fill"></div>
     </div>
 
-    <!-- Nombre de la marca -->
-    <div class="text-4xl font-extrabold mt-4">ConstruC <span class="text-yellow-400">Pinturas</span></div>
-
-    <!-- Texto principal -->
-    <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-      Con Color <br>Todo es Mejor
-    </h1>
-
-    <!-- Botones -->
-    <div class="flex gap-6">
-      <button class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold uppercase hover:scale-105 transition-transform">
-        Ver Catálogo
-      </button>
-      <button class="border border-white px-8 py-4 rounded-full font-bold uppercase hover:bg-white/10 transition-all">
-        Nuestra Fábrica
-      </button>
+    <!-- Texto -->
+    <div class="banner-content">
+        <h1>Con Color <br>Todo es Mejor</h1>
+        <button class="cta-button">VER CATÁLOGO</button>
     </div>
-  </div>
 
 </section>
+
+<script>
+    // Partículas flotantes tipo pintura
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    function initParticles() {
+        particles = [];
+        for(let i=0; i<100; i++){
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 3 + 1,
+                dx: (Math.random()-0.5) * 1,
+                dy: Math.random() * 1.5 + 0.5,
+                color: `hsla(${Math.random()*360}, 80%, 60%, 0.6)`
+            });
+        }
+    }
+
+    function drawParticles() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(let p of particles){
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+            p.x += p.dx;
+            p.y += p.dy;
+            if(p.x<0) p.x = canvas.width;
+            if(p.x>canvas.width) p.x = 0;
+            if(p.y>canvas.height) p.y = 0;
+        }
+        requestAnimationFrame(drawParticles);
+    }
+
+    initParticles();
+    drawParticles();
+</script>
 
 </body>
 </html>
