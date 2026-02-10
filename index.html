@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ConstruCPinturas | Banner Premium</title>
 
-<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -18,7 +17,77 @@ background:#0f172a;
 overflow-x:hidden;
 }
 
-/* Banner */
+/* ===== HEADER ===== */
+#mainHeader{
+position:fixed;
+width:100%;
+top:0;
+z-index:999;
+transition:.4s;
+background:transparent;
+}
+
+#mainHeader.scrolled{
+background:#f9c806;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.header-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 25px;
+}
+
+.header-logo{
+width:40px;
+}
+
+.menu-desktop{
+display:flex;
+gap:25px;
+}
+
+.menu-desktop a{
+color:white;
+text-decoration:none;
+font-weight:700;
+}
+
+#mainHeader.scrolled a{
+color:#0f172a;
+}
+
+.menu-toggle{
+font-size:26px;
+color:white;
+cursor:pointer;
+display:none;
+}
+
+#mainHeader.scrolled .menu-toggle{
+color:#0f172a;
+}
+
+.mobile-menu{
+display:none;
+flex-direction:column;
+background:#0f172a;
+padding:20px;
+}
+
+.mobile-menu a{
+color:white;
+padding:12px 0;
+text-decoration:none;
+}
+
+@media(max-width:768px){
+.menu-desktop{display:none;}
+.menu-toggle{display:block;}
+}
+
+/* ===== Banner ===== */
 .hero-banner{
 position:relative;
 width:100%;
@@ -30,7 +99,6 @@ overflow:hidden;
 background:linear-gradient(135deg,#1e293b,#0f172a);
 }
 
-/* Logo */
 .logo-3d-container{
 position:relative;
 width:150px;
@@ -40,13 +108,12 @@ z-index:10;
 
 .logo-3d-container img{
 width:140px;
-margin:auto;
 display:block;
-position:relative;
+margin:auto;
 z-index:5;
+position:relative;
 }
 
-/* Pintura */
 .paint-fill{
 position:absolute;
 bottom:0;
@@ -64,7 +131,6 @@ animation:fill 3s forwards ease-in-out;
 100%{height:120px;}
 }
 
-/* Texto banner */
 .banner-content{
 position:absolute;
 bottom:50px;
@@ -97,7 +163,6 @@ transform:translateY(-5px);
 box-shadow:0 10px 20px rgba(249,200,6,.5);
 }
 
-/* Partículas */
 canvas#particles{
 position:absolute;
 top:0;
@@ -106,63 +171,49 @@ width:100%;
 height:100%;
 z-index:2;
 }
+
+/* Banner móvil */
+@media(max-width:768px){
+.banner-content h1{font-size:2.2rem;}
+.logo-3d-container{
+margin-top:-80px;
+transform:scale(.75);
+}
+}
 </style>
 </head>
 
 <body>
-  <script>
-/* Header cambia color al bajar */
-window.addEventListener("scroll", ()=>{
-  const header = document.getElementById("mainHeader");
-  if(window.scrollY > 50){
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
-});
-
-/* Menú móvil */
-const toggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-
-toggle.addEventListener("click", ()=>{
-  mobileMenu.style.display =
-    mobileMenu.style.display === "flex" ? "none" : "flex";
-});
-</script>
 
 <header id="mainHeader">
-  <div class="header-container">
-    <img src="logo-c.png" class="header-logo">
+<div class="header-container">
+<img src="logo-c.png" class="header-logo">
 
-    <nav class="menu-desktop">
-      <a href="#">Inicio</a>
-      <a href="#">Nosotros</a>
-      <a href="#">Productos</a>
-      <a href="#">Contacto</a>
-    </nav>
+<nav class="menu-desktop">
+<a href="#">Inicio</a>
+<a href="#">Nosotros</a>
+<a href="#">Productos</a>
+<a href="#">Contacto</a>
+</nav>
 
-    <div class="menu-toggle" id="menuToggle">
-      ☰
-    </div>
-  </div>
+<div class="menu-toggle" id="menuToggle">☰</div>
+</div>
 
-  <!-- Menú móvil -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#">Inicio</a>
-    <a href="#">Nosotros</a>
-    <a href="#">Productos</a>
-    <a href="#">Contacto</a>
-  </div>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#">Inicio</a>
+<a href="#">Nosotros</a>
+<a href="#">Productos</a>
+<a href="#">Contacto</a>
+</div>
 </header>
 
-<!-- BANNER -->
+<!-- ===== BANNER ===== -->
 <section class="hero-banner">
 
 <canvas id="particles"></canvas>
 
 <div class="logo-3d-container">
-<img src="logo-c.png" alt="Logo C">
+<img src="logo-c.png">
 <div class="paint-fill"></div>
 </div>
 
@@ -173,19 +224,17 @@ toggle.addEventListener("click", ()=>{
 
 </section>
 
-<!-- SOBRE NOSOTROS -->
+<!-- ===== SOBRE NOSOTROS ===== -->
 <section class="py-28 bg-white text-gray-800 overflow-hidden">
 
 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
 
-<!-- Imagen -->
 <div class="about-img opacity-0 translate-x-[-80px] transition-all duration-1000">
 <div class="relative h-[420px] bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl shadow-xl flex items-center justify-center text-white text-2xl font-bold">
 Imagen de fábrica
 </div>
 </div>
 
-<!-- Texto -->
 <div class="about-text opacity-0 translate-x-[80px] transition-all duration-1000">
 
 <span class="text-yellow-500 font-bold uppercase tracking-widest">
@@ -198,55 +247,104 @@ Fabricamos color y calidad para cada proyecto
 
 <p class="text-lg text-gray-600 leading-relaxed mb-6">
 En <strong>ConstruC Pinturas</strong> fabricamos y distribuimos pinturas
-de alta calidad para proyectos residenciales e industriales,
-garantizando durabilidad y acabados superiores.
+de alta calidad para proyectos residenciales e industriales.
 </p>
 
-<p class="text-lg text-gray-600 leading-relaxed mb-10">
-Utilizamos procesos modernos para ofrecer productos adaptados al clima y
-necesidades del mercado venezolano.
-</p>
-
-<!-- Tarjetas -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-<div class="about-card p-6 bg-gray-100 rounded-2xl shadow hover:shadow-xl transition hover:-translate-y-2">
+<div class="p-6 bg-gray-100 rounded-2xl shadow hover:-translate-y-2 transition">
 <h4 class="font-bold mb-2">🛡 Calidad Garantizada</h4>
 <p class="text-gray-600">Productos duraderos.</p>
 </div>
 
-<div class="about-card p-6 bg-gray-100 rounded-2xl shadow hover:shadow-xl transition hover:-translate-y-2">
+<div class="p-6 bg-gray-100 rounded-2xl shadow hover:-translate-y-2 transition">
 <h4 class="font-bold mb-2">🏭 Producción Nacional</h4>
 <p class="text-gray-600">Fabricación en Valencia.</p>
 </div>
 
-<div class="about-card p-6 bg-gray-100 rounded-2xl shadow hover:shadow-xl transition hover:-translate-y-2">
+<div class="p-6 bg-gray-100 rounded-2xl shadow hover:-translate-y-2 transition">
 <h4 class="font-bold mb-2">🎨 Amplia Variedad</h4>
 <p class="text-gray-600">Soluciones para toda obra.</p>
 </div>
 
-<div class="about-card p-6 bg-gray-100 rounded-2xl shadow hover:shadow-xl transition hover:-translate-y-2">
+<div class="p-6 bg-gray-100 rounded-2xl shadow hover:-translate-y-2 transition">
 <h4 class="font-bold mb-2">🤝 Atención Profesional</h4>
 <p class="text-gray-600">Asesoría especializada.</p>
 </div>
 
 </div>
-
 </div>
-
 </div>
 </section>
 
 <script>
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
+/* Header cambia color */
+window.addEventListener("scroll", ()=>{
+const header=document.getElementById("mainHeader");
+window.scrollY>50?header.classList.add("scrolled"):
+header.classList.remove("scrolled");
+});
+
+/* Menú móvil */
+menuToggle.onclick=()=>{
+mobileMenu.style.display=
+mobileMenu.style.display==="flex"?"none":"flex";
+};
+
+/* Partículas */
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+let particles=[];
+
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+window.addEventListener('resize',resize);
+resize();
+
+function initParticles(){
+particles=[];
+for(let i=0;i<120;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*3+1,
+dx:(Math.random()-0.5)*0.8,
+dy:Math.random()*1.2+0.3,
+color:`hsla(${Math.random()*360},80%,60%,0.6)`
+});
+}
+}
+
+function drawParticles(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle=p.color;
+ctx.fill();
+p.x+=p.dx;
+p.y+=p.dy;
+if(p.x<0)p.x=canvas.width;
+if(p.x>canvas.width)p.x=0;
+if(p.y>canvas.height)p.y=0;
+});
+requestAnimationFrame(drawParticles);
+}
+initParticles();
+drawParticles();
+
+/* Animación sección */
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.remove("opacity-0");
 entry.target.classList.remove("translate-x-[-80px]");
 entry.target.classList.remove("translate-x-[80px]");
 }
 });
-},{threshold:0.3});
+},{threshold:.3});
 
 observer.observe(document.querySelector(".about-img"));
 observer.observe(document.querySelector(".about-text"));
@@ -254,7 +352,3 @@ observer.observe(document.querySelector(".about-text"));
 
 </body>
 </html>
-
-
-
-
