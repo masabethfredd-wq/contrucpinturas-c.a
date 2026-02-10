@@ -4,242 +4,231 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ConstruCPinturas | Banner Premium</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
 <style>
-    /* Reset básico */
-    * { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    body, html { 
-        height:100%; 
-        font-family: 'Montserrat', sans-serif;
-        background: #0f172a;
-        overflow-x: hidden;
-    }
+body,html{
+height:100%;
+font-family:Montserrat, sans-serif;
+background:#0f172a;
+overflow-x:hidden;
+}
 
-    /* Banner completo */
-    .hero-banner {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        background: linear-gradient(135deg, #1e293b, #0f172a);
-    }
+/* Banner */
+.hero-banner{
+position:relative;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:linear-gradient(135deg,#1e293b,#0f172a);
+}
 
-    /* Contenedor del logo */
-    .logo-3d-container {
-        position: relative;
-        width: 150px; /* contenedor para animación de pintura */
-        height: 150px;
-        z-index: 10;
-    }
+/* Logo */
+.logo-3d-container{
+position:relative;
+width:150px;
+height:150px;
+z-index:10;
+}
 
-    /* Imagen de la C */
-    .logo-3d-container img {
-        width: 160px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-        border-radius: 50%;
-        position: relative;
-        z-index: 5;
-    }
+.logo-3d-container img{
+width:140px;
+margin:auto;
+display:block;
+position:relative;
+z-index:5;
+}
 
-    /* Pintura líquida */
-    .paint-fill {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 0;
-        background: linear-gradient(135deg, #f9c806, #ff4d4d);
-        border-radius: 50%;
-        z-index: 4;
-        animation: fill 3s forwards ease-in-out;
-    }
+/* Pintura */
+.paint-fill{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+height:0;
+background:linear-gradient(135deg,#f9c806,#ff4d4d);
+border-radius:50%;
+z-index:4;
+animation:fill 3s forwards ease-in-out;
+}
 
-    @keyframes fill {
-        0% { height: 0; }
-        100% { height: 120px; } /* altura final igual a la C */
-    }
+@keyframes fill{
+0%{height:0;}
+100%{height:120px;}
+}
 
-    /* Texto principal */
-    .banner-content {
-        position: absolute;
-        bottom: 50px;
-        width: 100%;
-        text-align: center;
-        color: white;
-        z-index: 20;
-    }
+/* Texto banner */
+.banner-content{
+position:absolute;
+bottom:50px;
+width:100%;
+text-align:center;
+color:white;
+z-index:20;
+}
 
-    .banner-content h1 {
-        font-size: 4rem;
-        font-weight: 800;
-        margin-bottom: 20px;
-        text-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
+.banner-content h1{
+font-size:4rem;
+font-weight:800;
+margin-bottom:20px;
+text-shadow:0 0 10px rgba(0,0,0,.5);
+}
 
-    .cta-button {
-        padding: 1rem 2rem;
-        font-size: 1rem;
-        font-weight: 700;
-        color: #0f172a;
-        background: #f9c806;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
+.cta-button{
+padding:1rem 2rem;
+font-weight:700;
+color:#0f172a;
+background:#f9c806;
+border:none;
+border-radius:50px;
+cursor:pointer;
+transition:.3s;
+}
 
-    .cta-button:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(249,200,6,0.5);
-    }
+.cta-button:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 20px rgba(249,200,6,.5);
+}
 
-    /* Fondo de partículas */
-    canvas#particles {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-    }
+/* Partículas */
+canvas#particles{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:2;
+}
 </style>
 </head>
+
 <body>
 
+<!-- BANNER -->
 <section class="hero-banner">
 
-    <!-- Partículas -->
-    <canvas id="particles"></canvas>
+<canvas id="particles"></canvas>
 
-    <!-- Contenedor logo y pintura -->
-    <div class="logo-3d-container">
-        <img src="logo-c.png" alt="Logo C">
-        <div class="paint-fill"></div>
-    </div>
+<div class="logo-3d-container">
+<img src="logo-c.png" alt="Logo C">
+<div class="paint-fill"></div>
+</div>
 
-    <!-- Texto -->
-    <div class="banner-content">
-        <h1>Con Color <br>Todo es Mejor</h1>
-        <button class="cta-button">VER CATÁLOGO</button>
-    </div>
+<div class="banner-content">
+<h1>Con Color <br>Todo es Mejor</h1>
+<button class="cta-button">VER CATÁLOGO</button>
+</div>
 
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section class="py-28 bg-white text-gray-800">
+<div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+
+<div class="relative h-[400px] bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl shadow-xl flex items-center justify-center text-white text-2xl font-bold">
+Imagen de fábrica
+</div>
+
+<div>
+<span class="text-yellow-500 font-bold uppercase tracking-widest">
+Sobre Nosotros
+</span>
+
+<h2 class="text-4xl lg:text-5xl font-extrabold mt-4 mb-6">
+Fabricamos color y calidad para cada proyecto
+</h2>
+
+<p class="text-lg text-gray-600 leading-relaxed mb-6">
+En <strong>ConstruC Pinturas</strong> fabricamos y distribuimos pinturas
+de alta calidad para proyectos residenciales e industriales,
+garantizando durabilidad y acabados superiores.
+</p>
+
+<p class="text-lg text-gray-600 leading-relaxed mb-8">
+Utilizamos materias primas confiables y procesos modernos para ofrecer
+productos adaptados al clima y necesidades del mercado venezolano.
+</p>
+
+<div class="grid grid-cols-2 gap-6 text-sm">
+<div>
+<h4 class="font-bold mb-1">✔ Calidad Garantizada</h4>
+<p class="text-gray-500">Productos duraderos.</p>
+</div>
+
+<div>
+<h4 class="font-bold mb-1">✔ Producción Nacional</h4>
+<p class="text-gray-500">Fabricación en Valencia.</p>
+</div>
+
+<div>
+<h4 class="font-bold mb-1">✔ Amplia Variedad</h4>
+<p class="text-gray-500">Soluciones para toda obra.</p>
+</div>
+
+<div>
+<h4 class="font-bold mb-1">✔ Atención Profesional</h4>
+<p class="text-gray-500">Asesoría especializada.</p>
+</div>
+</div>
+</div>
+
+</div>
 </section>
 
 <script>
-    // Partículas flotantes tipo pintura
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+let particles=[];
 
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+window.addEventListener('resize',resize);
+resize();
 
-    window.addEventListener('resize', resize);
-    resize();
+function initParticles(){
+particles=[];
+for(let i=0;i<100;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*3+1,
+dx:(Math.random()-0.5),
+dy:Math.random()*1.5+0.5,
+color:`hsla(${Math.random()*360},80%,60%,0.6)`
+});
+}
+}
 
-    function initParticles() {
-        particles = [];
-        for(let i=0; i<100; i++){
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                r: Math.random() * 3 + 1,
-                dx: (Math.random()-0.5) * 1,
-                dy: Math.random() * 1.5 + 0.5,
-                color: `hsla(${Math.random()*360}, 80%, 60%, 0.6)`
-            });
-        }
-    }
+function drawParticles(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+for(let p of particles){
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle=p.color;
+ctx.fill();
 
-    function drawParticles() {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        for(let p of particles){
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-            ctx.fillStyle = p.color;
-            ctx.fill();
-            p.x += p.dx;
-            p.y += p.dy;
-            if(p.x<0) p.x = canvas.width;
-            if(p.x>canvas.width) p.x = 0;
-            if(p.y>canvas.height) p.y = 0;
-        }
-        requestAnimationFrame(drawParticles);
-    }
+p.x+=p.dx;
+p.y+=p.dy;
 
-    initParticles();
-    drawParticles();
+if(p.x<0)p.x=canvas.width;
+if(p.x>canvas.width)p.x=0;
+if(p.y>canvas.height)p.y=0;
+}
+requestAnimationFrame(drawParticles);
+}
+
+initParticles();
+drawParticles();
 </script>
-<!-- SOBRE NOSOTROS -->
-<section class="py-28 bg-white text-gray-800">
-  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-
-    <!-- Imagen o ilustración -->
-    <div class="relative">
-      <img src="fabrica.jpg" alt="Fábrica de pinturas"
-           class="rounded-3xl shadow-xl w-full object-cover">
-      <!-- Puedes cambiar fabrica.jpg por una foto real -->
-    </div>
-
-    <!-- Texto -->
-    <div>
-      <span class="text-primary font-bold uppercase tracking-widest">
-        Sobre Nosotros
-      </span>
-
-      <h2 class="text-4xl lg:text-5xl font-extrabold mt-4 mb-6">
-        Fabricamos color y calidad para cada proyecto
-      </h2>
-
-      <p class="text-lg text-gray-600 leading-relaxed mb-6">
-        En <strong>ConstruC Pinturas</strong> somos fabricantes y
-        distribuidores de pinturas diseñadas para ofrecer durabilidad,
-        rendimiento y acabados superiores tanto en proyectos residenciales
-        como industriales.
-      </p>
-
-      <p class="text-lg text-gray-600 leading-relaxed mb-8">
-        Trabajamos con materias primas de alta calidad y procesos modernos
-        para garantizar productos confiables, resistentes y adaptados al
-        clima y necesidades del mercado venezolano.
-      </p>
-
-      <!-- Valores rápidos -->
-      <div class="grid grid-cols-2 gap-6 text-sm">
-        <div>
-          <h4 class="font-bold mb-1">✔ Calidad Garantizada</h4>
-          <p class="text-gray-500">Productos probados y duraderos.</p>
-        </div>
-
-        <div>
-          <h4 class="font-bold mb-1">✔ Producción Nacional</h4>
-          <p class="text-gray-500">Fabricación directa en Valencia.</p>
-        </div>
-
-        <div>
-          <h4 class="font-bold mb-1">✔ Amplia Variedad</h4>
-          <p class="text-gray-500">Soluciones para todo tipo de obra.</p>
-        </div>
-
-        <div>
-          <h4 class="font-bold mb-1">✔ Atención Profesional</h4>
-          <p class="text-gray-500">Asesoría para cada cliente.</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
 
 </body>
 </html>
-
-
